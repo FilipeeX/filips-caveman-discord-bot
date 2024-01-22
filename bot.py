@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 
 import clear
+import prisla_sprava
 import pv
 import sync
 import embed
@@ -37,6 +38,10 @@ async def _clear(interakcia: discord.Interaction, sprav: int = None):
 async def _embed(interakcia: discord.Interaction):
     await embed.embed(interakcia)
 
+
+@client.event
+async def on_message(sprava: discord.Message):
+    await prisla_sprava.run(sprava)
 
 
 @client.event
