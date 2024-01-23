@@ -6,7 +6,7 @@ import prisla_sprava
 import pv
 import sync
 import embed
-
+import voice_zmena
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -42,6 +42,11 @@ async def _embed(interakcia: discord.Interaction):
 @client.event
 async def on_message(sprava: discord.Message):
     await prisla_sprava.run(sprava)
+
+
+@client.event
+async def on_voice_state_update(pouzivatel: discord.Member, predtym: discord.VoiceState, potom: discord.VoiceState):
+    await voice_zmena.run(pouzivatel, predtym, potom)
 
 
 @client.event
