@@ -5,7 +5,7 @@ import clear
 import prisla_sprava
 import pv
 import sync
-import embed
+import tvorenie_embedu
 import voice_zmena
 
 intents = discord.Intents.all()
@@ -36,7 +36,7 @@ async def _clear(interakcia: discord.Interaction, sprav: int = None):
     description="An admin only command, sends a pre-made embed from the code."
 )
 async def _embed(interakcia: discord.Interaction):
-    await embed.embed(interakcia)
+    await tvorenie_embedu.run(interakcia)
 
 
 @client.event
