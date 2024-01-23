@@ -12,7 +12,7 @@ intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
-# a
+
 @tree.command(
     name="sync",
     description="An admin only command that synchronizes the command tree of the bot."
