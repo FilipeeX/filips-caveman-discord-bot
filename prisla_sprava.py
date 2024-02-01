@@ -9,6 +9,7 @@ verif_role_ids = [
     1185727514715373598,
     1185731353359159406
 ]
+welcome_kanal_id = 1186018809543393412
 
 
 async def run(sprava: discord.Message):
@@ -35,7 +36,21 @@ async def verifikacia(sprava: discord.Message):
             reason="Verification"
         )
 
+        await welcome_sprava(pouzivatel, server)
+
     await sprava.delete()
+
+
+async def welcome_sprava(pouzivatel: discord.User, server: discord.Guild):
+
+    kanal = get(server.text_channels, id=welcome_kanal_id)
+    embed = discord.Embed(
+        title=f"Welcome in the cave! :tada:",
+        description=f"<@{pouzivatel.id}>",
+        color=0x404040
+    )
+
+    await kanal.send(embed=embed)
 
 
 async def ids_na_role(ids: list[int], server: discord.Guild):

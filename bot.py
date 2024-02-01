@@ -1,16 +1,22 @@
 import discord
+import mysql.connector.errors
 from discord import app_commands
 
 import clear
+import databaza
 import prisla_sprava
 import pv
 import sync
+import ticket_system
 import tvorenie_embedu
 import voice_zmena
+
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
+
+server_id = 1185588092560736356
 
 
 @tree.command(
@@ -52,6 +58,8 @@ async def on_voice_state_update(pouzivatel: discord.Member, predtym: discord.Voi
 @client.event
 async def on_ready():
     print(f'Úspešne prihlásenie za {client.user}.')
+    await ticket_system.nacitaj_tlacitka(client.get_guild(server_id))
+    print(f'Načítané tlačítka a bot pripraveny na funkciu.')
 
 
 token = pv.token()

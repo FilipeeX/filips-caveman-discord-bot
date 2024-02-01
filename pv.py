@@ -9,3 +9,23 @@ load_dotenv(dotenv_path)
 
 def token():
     return os.environ.get("TOKEN")
+
+
+def databaza_ip():
+    return os.environ.get("IP")
+
+
+def databaza_port():
+    return os.environ.get("PORT")
+
+
+def databaza_user():
+    return os.environ.get("USER")
+
+
+def databaza_heslo():
+    return os.environ.get("HESLO")
+
+
+def databaza():
+    return os.environ.get("DATABAZA")
