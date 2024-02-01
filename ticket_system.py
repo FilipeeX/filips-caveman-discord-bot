@@ -42,6 +42,8 @@ class TicketTvorbaView(discord.ui.View):
             return
 
         kanal = await kategoria.create_text_channel(f"🧻╰{pouzivatel}")
+        await interakcia.response.send_message(f"Your ticket has been created, <#{kanal.id}>.", ephemeral=True)
+
         rola = get(server.roles, id=mod_rola_id)
 
         await kanal.set_permissions(rola, view_channel=True, send_messages=True)
@@ -52,8 +54,6 @@ class TicketTvorbaView(discord.ui.View):
                                   view=TicketView())
 
         databaza.novy_ticket(kanal.id, sprava.id, interakcia.user)
-
-        await interakcia.response.send_message(f"Your ticket has been created, <#{kanal.id}>.", ephemeral=True)
 
 
 async def nacitaj_tlacitka(server: discord.Guild):

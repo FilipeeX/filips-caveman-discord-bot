@@ -7,6 +7,7 @@ konfiguracia = {
     'user': pv.databaza_user(),
     'password': pv.databaza_heslo(),
     'host': pv.databaza_ip(),
+    'port': pv.databaza_port(),
     'database': pv.databaza()
 }
 

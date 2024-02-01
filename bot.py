@@ -1,3 +1,4 @@
+import socket
 import discord
 import mysql.connector.errors
 from discord import app_commands
@@ -57,9 +58,9 @@ async def on_voice_state_update(pouzivatel: discord.Member, predtym: discord.Voi
 
 @client.event
 async def on_ready():
-    print(f'Úspešne prihlásenie za {client.user}.')
+    print(f'Successfully logged in as {client.user}.')
     await ticket_system.nacitaj_tlacitka(client.get_guild(server_id))
-    print(f'Načítané tlačítka a bot pripraveny na funkciu.')
+    print(f'MySQL connection established successfully.')
 
 
 token = pv.token()

@@ -20,7 +20,7 @@ def databaza_port():
 
 
 def databaza_user():
-    return os.environ.get("USER")
+    return os.environ.get("POUZIVATEL")
 
 
 def databaza_heslo():
