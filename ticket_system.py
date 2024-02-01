@@ -9,6 +9,7 @@ from discord.utils import get
 ticket_tvorba_kanal_id = 1186241213158916166
 ticket_tvorba_sprava_id = 1202211822317600780
 kategoria_id = 1185952412876415016
+mod_rola_id = 1185731888808210563
 
 
 class TicketView(discord.ui.View):
@@ -41,8 +42,10 @@ class TicketTvorbaView(discord.ui.View):
             return
 
         kanal = await kategoria.create_text_channel(f"🧻╰{pouzivatel}")
+        rola = get(server.roles, id=mod_rola_id)
 
-        # TODO pridat perms role staff perms
+        await kanal.set_permissions(rola, view_channel=True, send_messages=True)
+        await kanal.set_permissions(pouzivatel, view_channel=True, send_messages=True)
 
         embed = ticket_sprava_embed()
         sprava = await kanal.send(embed=embed,
